@@ -28,6 +28,7 @@ namespace BibliotekaWPFApp
 
             db = new BibliotekaDb();
 
+            Load();
         }
 
         public void Load()
@@ -38,12 +39,24 @@ namespace BibliotekaWPFApp
 
         private void addBookBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddBook ab = new AddBook(this);
+            ab.Show();
+            this.IsEnabled = false;
         }
 
         private void removeBookBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (booksGrid.SelectedItem != null && booksGrid.SelectedItem is Book)
+            {
+                Book book = booksGrid.SelectedItem as Book;
+                db.Books.Remove(book);
+                db.SaveChanges();
+                Load();
+            }
+            else
+            {
+                MessageBox.Show("Wybierz pozycje do usunięcia!");
+            }
         }
     }
 }

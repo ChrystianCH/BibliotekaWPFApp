@@ -8,6 +8,13 @@ namespace BibliotekaWPFApp
 {
     public class Book
     {
+        public Book(string title, string author, int categoryId)
+        {
+            Title = title;
+            Author = author;
+            CategoryId = categoryId;
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }

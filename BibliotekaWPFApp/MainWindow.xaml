@@ -7,9 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="booksGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,400,50"/>
-        <Button x:Name="removeBookBtn" Content="Usuń" HorizontalAlignment="Left" Margin="343,389,0,0" VerticalAlignment="Top" Width="57" Click="removeBookBtn_Click"/>
-        <Button x:Name="addBookBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="277,389,0,0" VerticalAlignment="Top" Width="61" Click="addBookBtn_Click"/>
-
+        <DataGrid x:Name="booksGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,400,50" />
+        <Button x:Name="removeBookBtn" Content="Usuń" HorizontalAlignment="Left" Margin="343,389,0,0" VerticalAlignment="Top" Width="57" Click="removeBookBtn_Click" />
+        <Button x:Name="addBookBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="277,389,0,0" VerticalAlignment="Top" Width="61" Click="addBookBtn_Click" />
     </Grid>
 </Window>
