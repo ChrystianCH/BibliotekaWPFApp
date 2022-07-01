@@ -33,8 +33,15 @@ namespace BibliotekaWPFApp
 
         public void Load()
         {
+            booksGrid.IsEnabled = false;
             booksGrid.ItemsSource = null;
             booksGrid.ItemsSource = db.Books.ToList();
+            clientsGrid.IsEnabled = false;
+            clientsGrid.ItemsSource = null;
+            clientsGrid.ItemsSource = db.Clients.ToList();
+            borrowsGrid.IsEnabled = false;
+            borrowsGrid.ItemsSource = null;
+            borrowsGrid.ItemsSource = db.Borrows.ToList();
         }
 
         private void addBookBtn_Click(object sender, RoutedEventArgs e)
@@ -46,7 +53,7 @@ namespace BibliotekaWPFApp
 
         private void removeBookBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (booksGrid.SelectedItem != null && booksGrid.SelectedItem is Book)
+            if(booksGrid.SelectedItem != null && booksGrid.SelectedItem is Book)
             {
                 Book book = booksGrid.SelectedItem as Book;
                 db.Books.Remove(book);
@@ -56,6 +63,60 @@ namespace BibliotekaWPFApp
             else
             {
                 MessageBox.Show("Wybierz pozycje do usunięcia!");
+            }
+        }
+
+        private void addClientBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient ac = new AddClient(this);
+            ac.Show();
+            this.IsEnabled = false;
+        }
+
+        private void removeClientBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (clientsGrid.SelectedItem != null && clientsGrid.SelectedItem is Client)
+            {
+                Client client = clientsGrid.SelectedItem as Client;
+                db.Clients.Remove(client);
+                db.SaveChanges();
+                Load();
+            }
+            else
+            {
+                MessageBox.Show("Wybierz pozycje do usunięcia!");
+            }
+        }
+
+        private void borrowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (booksGrid.SelectedItem != null && booksGrid.SelectedItem is Book)
+            {
+                Book book = booksGrid.SelectedItem as Book;
+
+                BorrowWindow bw = new BorrowWindow(book, this);
+                bw.Show();
+                this.IsEnabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Wybierz pozycje do wypożyczenia!");
+            }
+        }
+
+        private void returnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (borrowsGrid.SelectedItem != null && borrowsGrid.SelectedItem is Book)
+            {
+                Borrow borrow = borrowsGrid.SelectedItem as Borrow;
+                borrow.Returned = true;
+                borrow.ReturnDate = DateTime.Now;
+
+                db.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Wybierz pozycje do zwrotu!");
             }
         }
     }

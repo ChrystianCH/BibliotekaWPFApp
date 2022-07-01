@@ -15,36 +15,29 @@ using System.Windows.Shapes;
 namespace BibliotekaWPFApp
 {
     /// <summary>
-    /// Logika interakcji dla klasy AddBook.xaml
+    /// Logika interakcji dla klasy AddClient.xaml
     /// </summary>
-    public partial class AddBook : Window
+    public partial class AddClient : Window
     {
         public MainWindow Mw { get; set; }
-
-        public AddBook(MainWindow mw)
+        public AddClient(MainWindow mw)
         {
             InitializeComponent();
 
-            Mw = mw;
-
-            categoryCmb.ItemsSource = Mw.db.Categories.ToList();
-            categoryCmb.SelectedIndex = 0;
+            this.Mw = mw;
         }
 
         private void zapiszBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(titleTxt1.Text) || string.IsNullOrEmpty(authorTxt.Text))
+            if (string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(surnameTxt.Text))
             {
                 MessageBox.Show("Uzupełnij wszystkie pola!");
             }
             else
             {
-                
-                Category c = (Category)categoryCmb.SelectedItem;
+                Client c = new Client(nameTxt.Text, surnameTxt.Text);
 
-                Book b = new Book(titleTxt1.Text, authorTxt.Text,c.Id);
-
-                Mw.db.Books.Add(b);
+                Mw.db.Clients.Add(c);
                 Mw.db.SaveChanges();
 
                 Mw.Load();

@@ -12,6 +12,15 @@ namespace BibliotekaWPFApp
         public BibliotekaDb()
         {
             Database.EnsureCreated();
+
+            if(!Categories.Any())
+            {
+                Categories.Add(new Category("Powieść"));
+                Categories.Add(new Category("Kryminał"));
+                Categories.Add(new Category("Historia"));
+                Categories.Add(new Category("Nauka"));
+                this.SaveChanges();
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

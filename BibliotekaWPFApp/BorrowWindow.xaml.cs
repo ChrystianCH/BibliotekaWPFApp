@@ -15,42 +15,40 @@ using System.Windows.Shapes;
 namespace BibliotekaWPFApp
 {
     /// <summary>
-    /// Logika interakcji dla klasy AddBook.xaml
+    /// Logika interakcji dla klasy BorrowWindow.xaml
     /// </summary>
-    public partial class AddBook : Window
+    public partial class BorrowWindow : Window
     {
         public MainWindow Mw { get; set; }
+        public Book Book { get; set; }
 
-        public AddBook(MainWindow mw)
+        public BorrowWindow(Book book, MainWindow mw)
         {
             InitializeComponent();
-
+            Book = book;
             Mw = mw;
 
-            categoryCmb.ItemsSource = Mw.db.Categories.ToList();
-            categoryCmb.SelectedIndex = 0;
+            clientsCmb.ItemsSource = Mw.db.Clients.ToList();
+            clientsCmb.SelectedIndex = 0;
         }
 
-        private void zapiszBtn_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(titleTxt1.Text) || string.IsNullOrEmpty(authorTxt.Text))
+            Client c = clientsCmb.SelectedItem as Client;
+
+            if (c == null)
             {
-                MessageBox.Show("Uzupełnij wszystkie pola!");
+                MessageBox.Show("Wybierz kilenta.");
             }
             else
             {
-                
-                Category c = (Category)categoryCmb.SelectedItem;
-
-                Book b = new Book(titleTxt1.Text, authorTxt.Text,c.Id);
-
-                Mw.db.Books.Add(b);
+                Borrow b = new Borrow(c.Id, Book.Id);
+                Mw.db.Borrows.Add(b);
                 Mw.db.SaveChanges();
-
                 Mw.Load();
-                Mw.IsEnabled = true;
 
                 this.Close();
+                Mw.IsEnabled = true;
             }
         }
 

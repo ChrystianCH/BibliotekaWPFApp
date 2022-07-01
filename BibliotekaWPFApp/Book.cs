@@ -13,6 +13,7 @@ namespace BibliotekaWPFApp
             Title = title;
             Author = author;
             CategoryId = categoryId;
+
         }
 
         public int Id { get; set; }
@@ -22,5 +23,11 @@ namespace BibliotekaWPFApp
 
         public Category Category { get; set; }
         public List<Borrow> Borrows { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"{Author} {Title} - {Category}"; 
+        }
     }
 }
