@@ -20,6 +20,7 @@ namespace BibliotekaWPFApp
     public partial class AddClient : Window
     {
         public MainWindow Mw { get; set; }
+
         public AddClient(MainWindow mw)
         {
             InitializeComponent();
@@ -45,6 +46,11 @@ namespace BibliotekaWPFApp
 
                 this.Close();
             }
+        }
+
+        private void wyjdzBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void Window_Closed(object sender, EventArgs e)
