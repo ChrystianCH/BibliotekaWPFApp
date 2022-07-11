@@ -42,7 +42,7 @@ namespace BibliotekaWPFApp
             }
             else
             {
-                Borrow b = new Borrow(c.Id, Book.Id);
+                Borrow b = new Borrow(Book.Id,c.Id);
                 Mw.db.Borrows.Add(b);
                 Mw.db.SaveChanges();
                 Mw.Load();

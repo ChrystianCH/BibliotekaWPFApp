@@ -33,13 +33,10 @@ namespace BibliotekaWPFApp
 
         public void Load()
         {
-            booksGrid.IsEnabled = false;
             booksGrid.ItemsSource = null;
             booksGrid.ItemsSource = db.Books.ToList();
-            clientsGrid.IsEnabled = false;
             clientsGrid.ItemsSource = null;
             clientsGrid.ItemsSource = db.Clients.ToList();
-            borrowsGrid.IsEnabled = false;
             borrowsGrid.ItemsSource = null;
             borrowsGrid.ItemsSource = db.Borrows.ToList();
         }
@@ -106,13 +103,15 @@ namespace BibliotekaWPFApp
 
         private void returnBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (borrowsGrid.SelectedItem != null && borrowsGrid.SelectedItem is Book)
+            if (borrowsGrid.SelectedItem != null && borrowsGrid.SelectedItem is Borrow)
             {
                 Borrow borrow = borrowsGrid.SelectedItem as Borrow;
                 borrow.Returned = true;
                 borrow.ReturnDate = DateTime.Now;
 
                 db.SaveChanges();
+
+                Load();
             }
             else
             {

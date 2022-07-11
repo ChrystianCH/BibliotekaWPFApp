@@ -33,15 +33,16 @@ namespace BibliotekaWPFApp
 
         private void zapiszBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(titleTxt1.Text) || string.IsNullOrEmpty(authorTxt.Text))
+            if(string.IsNullOrEmpty(titleTxt1.Text) || string.IsNullOrEmpty(authorTxt.Text))
             {
                 MessageBox.Show("Uzupełnij wszystkie pola!");
             }
             else
             {
+                
                 Category c = (Category)categoryCmb.SelectedItem;
 
-                Book b = new Book(titleTxt1.Text, authorTxt.Text, c.Id);
+                Book b = new Book(titleTxt1.Text, authorTxt.Text,c.Id);
 
                 Mw.db.Books.Add(b);
                 Mw.db.SaveChanges();
@@ -51,11 +52,6 @@ namespace BibliotekaWPFApp
 
                 this.Close();
             }
-        }
-
-        private void wyjdzBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void Window_Closed(object sender, EventArgs e)

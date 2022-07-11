@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BibliotekaWPFApp"
         mc:Ignorable="d"
-        Title="BorrowWindow" Height="136" Width="142" Closed="Window_Closed">
+        Title="BorrowWindow" Height="176" Width="161" Closed="Window_Closed">
     <Grid>
-        <ComboBox x:Name="clientsCmb" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="clientsCmb" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Klient" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Zapisz" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+        <Button Content="Zapisz" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
 
     </Grid>
 </Window>
