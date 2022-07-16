@@ -19,9 +19,14 @@ namespace BibliotekaWPFApp
     /// </summary>
     public partial class BorrowWindow : Window
     {
+        /// <summary>
+        /// getter setter dla danych ponizej
+        /// </summary>
         public MainWindow Mw { get; set; }
         public Book Book { get; set; }
-
+        /// <summary>
+        /// konstruktor dla borrowWindow zapisujcy dane
+        /// </summary>
         public BorrowWindow(Book book, MainWindow mw)
         {
             InitializeComponent();
@@ -31,7 +36,9 @@ namespace BibliotekaWPFApp
             clientsCmb.ItemsSource = Mw.db.Clients.ToList();
             clientsCmb.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// metoda dla buttona
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Client c = clientsCmb.SelectedItem as Client;
@@ -51,7 +58,9 @@ namespace BibliotekaWPFApp
                 Mw.IsEnabled = true;
             }
         }
-
+        /// <summary>
+        /// zamykanie okna
+        /// </summary>
         private void Window_Closed(object sender, EventArgs e)
         {
             Mw.IsEnabled = true;

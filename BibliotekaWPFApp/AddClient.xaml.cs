@@ -15,24 +15,34 @@ using System.Windows.Shapes;
 namespace BibliotekaWPFApp
 {
     /// <summary>
-    /// Logika interakcji dla klasy AddClient.xaml
+    /// klasa Addbook ktora dziedziczy Window z System.Windows sluzy do dodawania ksiazek
     /// </summary>
     public partial class AddClient : Window
     {
+        /// <summary>
+        /// setter getter dla zmiennej Mw typ danych MainWindow
+        /// </summary>
         public MainWindow Mw { get; set; }
+        /// <summary>
+        /// konstruktor dla klasy addclient
+        /// </summary>
         public AddClient(MainWindow mw)
         {
             InitializeComponent();
 
             this.Mw = mw;
         }
-
+        /// <summary>
+        /// metoda dla eventu zapisz dane wprowadzone przez usera
+        /// </summary>
         private void zapiszBtn_Click(object sender, RoutedEventArgs e)
         {
+            //spradzanie danych
             if (string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(surnameTxt.Text))
             {
                 MessageBox.Show("Uzupełnij wszystkie pola!");
             }
+            //dodawanie danych 
             else
             {
                 Client c = new Client(nameTxt.Text, surnameTxt.Text);
@@ -46,7 +56,9 @@ namespace BibliotekaWPFApp
                 this.Close();
             }
         }
-
+        /// <summary>
+        /// zamkniecie okna
+        /// </summary>
         private void Window_Closed(object sender, EventArgs e)
         {
             Mw.IsEnabled = true;

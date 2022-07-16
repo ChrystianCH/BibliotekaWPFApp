@@ -7,10 +7,17 @@ using System.Threading.Tasks;
 
 namespace BibliotekaWPFApp
 {
+    /// <summary>
+    /// klasa dilioteki ktora dziedziczy dbContext czyli model bazy 
+    /// </summary>
     public class BibliotekaDb : DbContext
     {
+        /// <summary>
+        /// konstruktor dodajacy do Tabeli Categori dane jescli jest pusta
+        /// </summary>
         public BibliotekaDb()
         {
+            //utwozenie jezeli nie istnieje
             Database.EnsureCreated();
 
             if(!Categories.Any())
@@ -30,7 +37,9 @@ namespace BibliotekaWPFApp
                 optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BibliotekaApp;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
-
+        /// <summary>
+        /// Gettery i settery dla danych pozniej
+        /// </summary>
         public DbSet<Book> Books { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Category> Categories { get; set; }

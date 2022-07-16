@@ -16,12 +16,17 @@ using System.Windows.Shapes;
 namespace BibliotekaWPFApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// klasa MainWindow ktora dziedziczy window
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// getter setter dla danych
+        /// </summary>
         public BibliotekaDb db { get; set; }
-
+        /// <summary>
+        /// konstruktor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -30,7 +35,9 @@ namespace BibliotekaWPFApp
 
             Load();
         }
-
+        /// <summary>
+        /// funkcja ladujaca 
+        /// </summary>
         public void Load()
         {
             booksGrid.ItemsSource = null;
