@@ -1,8 +1,13 @@
 # BibliotekaWPFApp
-Aplikacja do zarzadznia biblotekom 
+<h1>Aplikacja do zarzadznia biblotekom </h1>
+<h3><p>Wyglad aplikcacji</p></h3>
 <img src="https://github.com/ChrystianCH/BibliotekaWPFApp/blob/master/BibliotekaWPFApp/Img/Bez%C2%A0tytu%C5%82u.png">
 
-Jest tu wypozycznie ksiazki <br>
+<h3><p>Jest tu wypozycznie ksiazki</p></h3>
+<p>Aby dodać ksiązke nalezy nacisnąć dodaj Ksiązkę aby  </p>
+<img src="https://github.com/ChrystianCH/BibliotekaWPFApp/blob/master/BibliotekaWPFApp/Img/3.png">
+
+
 <img src="https://github.com/ChrystianCH/BibliotekaWPFApp/blob/master/BibliotekaWPFApp/Img/4.png">
 
 Dodanie ksiazki <br>
@@ -11,22 +16,6 @@ Dodanie ksiazki <br>
 Wypozyczenie ksiazki <br>
 <img src="https://github.com/ChrystianCH/BibliotekaWPFApp/blob/master/BibliotekaWPFApp/Img/2.png">
 
-<style>
-h1 {
-  color: blue;
-  font-family: verdana;
-  font-size: 300%;
-
-}
-p  {
-  color: red;
-  font-family: courier;
-  font-size: 160%;
-}
-</style>
-</head>
 
 
-<h1>This is a heading</h1>
-<p>This is a paragraph.</p>
 
