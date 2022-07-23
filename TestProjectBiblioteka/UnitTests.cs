@@ -6,6 +6,7 @@ namespace TestProjectBiblioteka
     public class UnitTests
     {
         [TestMethod]
+        //wypozyczenie 
         public void BookToStringTest()
         {
             Book b = new Book("title1","author1",1);
@@ -14,13 +15,14 @@ namespace TestProjectBiblioteka
         }
 
         [TestMethod]
+        //wypozyczenie 
         public void BorrowToStringTest()
         {
             Borrow b = new Borrow(1,1);
 
             Assert.IsTrue(b.ToString().Contains("Wypo¿yczono"));
         }
-
+        //sprawdzenie klienta
         [TestMethod]
         public void ClientToStringTest()
         {
@@ -29,7 +31,7 @@ namespace TestProjectBiblioteka
             Assert.IsTrue(c.ToString().Contains("Jan") && c.ToString().Contains("Kowalski"));
         }
 
-
+        //sprawdzenie kategori
         [TestMethod]
         public void CategoryToStringTest()
         {
