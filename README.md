@@ -10,3 +10,23 @@ Dodanie ksiazki <br>
 
 Wypozyczenie ksiazki <br>
 <img src="https://github.com/ChrystianCH/BibliotekaWPFApp/blob/master/BibliotekaWPFApp/Img/2.png">
+
+<style>
+h1 {
+  color: blue;
+  font-family: verdana;
+  font-size: 300%;
+
+}
+p  {
+  color: red;
+  font-family: courier;
+  font-size: 160%;
+}
+</style>
+</head>
+
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+
