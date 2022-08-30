@@ -14,7 +14,7 @@
                 <GradientStop Color="#1E91A5" Offset="1.0"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <DataGrid x:Name="booksGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,28,717,72"/>
+        <DataGrid x:Name="booksGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,28,717,72" AutoGeneratingColumn="booksGrid_AutoGeneratingColumn"/>
         <Button x:Name="removeBookBtn" Content="Usuń Książkę" HorizontalAlignment="Left" Margin="205,370,0,0" VerticalAlignment="Top" Width="95" Click="removeBookBtn_Click" 
                 Height="20"
                 Background="#F08080"
@@ -30,7 +30,7 @@
                 FontSize="13"
                 />
         <Label x:Name="booksLbl" Content="Książki" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="clientsGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="288,28,388,72"/>
+        <DataGrid x:Name="clientsGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="288,28,388,72" AutoGeneratingColumn="clientsGrid_AutoGeneratingColumn"/>
         <Button x:Name="removeClientBtn" Content="Usuń Klienta" HorizontalAlignment="Left" Margin="504,370,0,0" VerticalAlignment="Top" Width="95" Click="removeClientBtn_Click"
                 Height="20"
                 Background="#F08080"
@@ -46,7 +46,7 @@
                 FontSize="13"
                 />
         <Label x:Name="clientslbl" Content="Klienci" HorizontalAlignment="Left" Margin="288,2,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="borrowsGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="617,28,10,72"/>
+        <DataGrid x:Name="borrowsGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="617,28,10,72" AutoGeneratingColumn="borrowsGrid_AutoGeneratingColumn"/>
         <Label Content="Historia wypożyczeń" HorizontalAlignment="Left" Margin="566,2,0,0" VerticalAlignment="Top"/>
         <Button x:Name="borrowBtn" Content="Wypożycz" HorizontalAlignment="Left" Margin="16,370,0,0" VerticalAlignment="Top" Click="borrowBtn_Click"
                 Width="80"

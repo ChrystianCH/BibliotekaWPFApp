@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace BibliotekaWPFApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool loggedIn = false;
         /// <summary>
         /// getter setter dla danych
         /// </summary>
@@ -33,6 +35,14 @@ namespace BibliotekaWPFApp
 
             db = new BibliotekaDb();
 
+            LoginWindow lw = new LoginWindow(this);
+            lw.ShowDialog();
+
+            if(!loggedIn)
+            {
+                this.Close();
+            }
+
             Load();
         }
         /// <summary>
@@ -41,9 +51,9 @@ namespace BibliotekaWPFApp
         public void Load()
         {
             booksGrid.ItemsSource = null;
-            booksGrid.ItemsSource = db.Books.ToList();
+            booksGrid.ItemsSource = db.Books.Include(i=>i.Category).ToList();
             clientsGrid.ItemsSource = null;
-            clientsGrid.ItemsSource = db.Clients.ToList();
+            clientsGrid.ItemsSource = db.Clients.ToList();      
             borrowsGrid.ItemsSource = null;
             borrowsGrid.ItemsSource = db.Borrows.ToList();
         }
@@ -123,6 +133,46 @@ namespace BibliotekaWPFApp
             else
             {
                 MessageBox.Show("Wybierz pozycje do zwrotu!");
+            }
+        }
+
+        private void booksGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string name = e.Column.Header.ToString();
+
+            if (name == "Id" || name == "Borrows" || name == "CategoryId")
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void clientsGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string name = e.Column.Header.ToString();
+
+            if (name == "Id" || name == "Borrows")
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void borrowsGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            /*public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public int BookId { get; set; }
+        public int ClientId { get; set; }
+        public bool Returned { get; set; }
+        public DateTime ReturnDate { get; set; }
+
+        public Book Book { get; set; }
+        public Client Client { get; set; }*/
+
+            string name = e.Column.Header.ToString();
+
+            if (name == "Id" || name == "BookId" || name == "ClientId")
+            {
+                e.Cancel = true;
             }
         }
     }
