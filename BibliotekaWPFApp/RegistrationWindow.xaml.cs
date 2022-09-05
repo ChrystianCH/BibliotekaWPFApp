@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,25 +36,23 @@ namespace BibliotekaWPFApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(loginTxt.Text) || loginTxt.Text.Length < 5
-                || string.IsNullOrEmpty(passwordTxt.Text) || passwordTxt.Text.Length < 5)
+            if (Regex.Matches(passwordTxt.Text, "[A-Z]").Count < 1 || Regex.Matches(passwordTxt.Text, "[0-9]").Count < 1 || Regex.Matches(passwordTxt.Text, @"[0-9a-zA-Z\.-]").Count < 1 || string.IsNullOrEmpty(loginTxt.Text) || loginTxt.Text.Length < 5 || string.IsNullOrEmpty(passwordTxt.Text) || passwordTxt.Text.Length < 5)
             {
-                MessageBox.Show("Login i hasło muszą mieć minimum 5 znaków.");
+                MessageBox.Show("Login and password have to 5 or Possword have to contain 1 big letter, 1 number, 1 char");
             }
             else if (!EmailIsValid(emailTxt.Text))
             {
-                MessageBox.Show("Adres email jest niepoprawny.");
+                MessageBox.Show("Adress email is incorrect ");
             }
-            if (mw.db.Users.Any(a => a.Login == loginTxt.Text))
+            else if (this.mw.db.Users.Any(a => a.Login == loginTxt.Text))
             {
-                MessageBox.Show("Podany login jest już zajęty.");
+                MessageBox.Show("The given login is taken");
             }
             else
             {
                 User user = new User(loginTxt.Text, passwordTxt.Text, emailTxt.Text);
-
-                mw.db.Users.Add(user);
-                mw.db.SaveChanges();
+                this.mw.db.Users.Add(user);
+                this.mw.db.SaveChanges();
                 this.Close();
             }
         }
