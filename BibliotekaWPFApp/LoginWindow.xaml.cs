@@ -24,14 +24,14 @@ namespace BibliotekaWPFApp
         public LoginWindow(MainWindow mw)
         {
             InitializeComponent();
-            this.mw = mw;   
+            this.mw = mw;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            User user = this.mw.db.Users.FirstOrDefault(f => f.Login == loginTxt.Text && f.Password == passwordTxt.Text);
+            User user = this.mw.db.Users.FirstOrDefault(f => f.Login == loginTxt.Text && f.Password == passwordTxt.Password);
 
-            if(user != null)
+            if (user != null)
             {
                 this.mw.loggedIn = true;
                 this.Close();

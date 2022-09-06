@@ -38,11 +38,11 @@ namespace BibliotekaWPFApp
         {
             if (Regex.Matches(passwordTxt.Text, "[A-Z]").Count < 1 || Regex.Matches(passwordTxt.Text, "[0-9]").Count < 1 || Regex.Matches(passwordTxt.Text, @"[0-9a-zA-Z\.-]").Count < 1 || string.IsNullOrEmpty(loginTxt.Text) || loginTxt.Text.Length < 5 || string.IsNullOrEmpty(passwordTxt.Text) || passwordTxt.Text.Length < 5)
             {
-                MessageBox.Show("Login and password have to 5 or Possword have to contain 1 big letter, 1 number, 1 char");
+                MessageBox.Show("Login and password have to 5 character or Possword have to contain 1 big letter, 1 number, 1 symbol");
             }
             else if (!EmailIsValid(emailTxt.Text))
             {
-                MessageBox.Show("Adress email is incorrect ");
+                MessageBox.Show("Adress email is incorrect");
             }
             else if (this.mw.db.Users.Any(a => a.Login == loginTxt.Text))
             {
